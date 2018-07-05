@@ -1,0 +1,82 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+.navbar-default{
+	background-color: teal !important;
+}
+
+#blog{
+	float: left;
+	color: black;
+	font-weight: bold;
+	font-size: 2em;
+	text-transform: uppercase;
+	letter-spacing: -1px;
+}
+
+#blog:hover{
+	color: white;
+	text-decoration: none;
+}
+
+#link{
+	float: left;
+	font-weight: bold;
+	font-size: 2em;
+	text-transform: uppercase;
+	letter-spacing: -2px;
+	color: white;
+}
+
+#link:hover{
+	color: grey;
+	text-decoration: none;
+}
+
+#jumbotron{
+	background-image: asset-url('cover.webp');
+	background-size: cover;
+	height: 500px;
+}
+
+#jumbotron h1{
+	color: black;
+	font-weight: bold;
+	text-align: center;	
+}
+
+footer{
+	margin-top: 45px;
+	padding-top: 5px;
+	border-top: 1px solid #eaeaea;
+	color: #777;
+}
+
+footer a:hover{
+	color: #222
+}
+
+footer small{
+	float: left;
+}
+
+footer ul{
+	float: right;
+	list-style: none;
+}
+
+footer ul li {
+	float: left;
+	margin-left: 15px;
+}
+
+.article-title{
+	font-weight: bold;
+	font-size: 2em;
+}
+
+.article-body{
+	border-top: 1px solid #eaeaea;
+	padding-top: 15px;
+	padding-bottom: 15px;
+}
