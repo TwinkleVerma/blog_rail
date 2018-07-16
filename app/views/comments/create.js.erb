@@ -1,0 +1,3 @@
+$("#com").html("<%= escape_javascript(render(:partial => @comment)) %>");
+$("#text").val("");
+$("#text").attr("placeholder", "Enter Comment...");

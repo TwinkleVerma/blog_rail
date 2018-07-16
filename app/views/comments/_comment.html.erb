@@ -1,22 +1,20 @@
 <div class="row">
-    <div class="col-xs-5 col-xs-offset-5">
-      <h2 style="font-weight: bold">Comments</h2>
-    </div>
-    <div class="col-xs-12">
-      <% @article.comments.each do |comment| %>
-        <div class="col-xs-12">
-          <h5 style="font-weight: bold;">Commenter:</h5>
-          <%= comment.commenter %>
-        </div>
-        <div class="col-xs-12">
-          <h5 style="font-weight: bold;">Comment:</h5>
-          <%= comment.body %>
-        </div>
-      <% end %> 
-    </div>
-    <div class="col-xs-12">
-      <%= link_to 'Destroy Comment', [comment.article, comment],
-      method: :delete,
-      data: { confirm: 'Are you sure?'} %>
-    </div>
+  <div class="col-xs-5 col-xs-offset-5">
+    <h4 style="font-weight: bold">Comments</h4>
+  </div>
+  <div class="col-xs-12">
+    <% @article.comments.each do |comment| %>
+      <div class="col-xs-12" id="cm">
+        <% if current_user.id == comment.user_id %>
+          You :
+          <div class="col-xs-12">
+            <%= link_to 'Destroy Comment', [comment.article, comment], method: :delete, id: 'link', data: { confirm: 'Are you sure?'} %>
+          </div>
+        <% else %>
+          <%= User.find(comment.user_id).username.capitalize %> :
+        <% end %>
+        <%= comment.body %>
+      </div>
+    <% end %> 
+  </div>
 </div>

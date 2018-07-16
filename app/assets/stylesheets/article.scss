@@ -2,7 +2,7 @@
 @import "bootstrap";
 
 .navbar-default{
-	background-color: teal !important;
+  background-color: teal !important;
 }
 
 #blog{
@@ -12,6 +12,12 @@
 	font-size: 2em;
 	text-transform: uppercase;
 	letter-spacing: -1px;
+}
+
+#logout{
+	color: black;
+	text-decoration: none;
+	font-size: 2em;
 }
 
 #blog:hover{
@@ -79,4 +85,19 @@ footer ul li {
 	border-top: 1px solid #eaeaea;
 	padding-top: 15px;
 	padding-bottom: 15px;
+}
+
+h3:before {
+    content: open-quote;
+}
+ 
+h3:after {
+    content: close-quote;
+}
+
+#p{
+	color: black; 
+	font-size: 2em; 
+	text-decoration: none; 
+	padding-right: 20px;
 }

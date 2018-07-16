@@ -1,2 +1,12 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+#text{
+	width: 80%;
+	margin-left: 10%;
+}
+#link{
+	color: blue;
+	text-transform: capitalize;
+	font-size:1.2em;
+}

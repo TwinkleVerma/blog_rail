@@ -1,8 +1,13 @@
 Rails.application.routes.draw do
-  resources :users
+  # resources :users
   get 'articles/new'
   get 'welcome/index'
   get 'articles/alert'
+  resources :users do 
+    get 'login', on: :collection
+    get 'logout', on: :collection
+    post 'auth_user', on: :collection
+  end
   resources :articles do
   	resources :comments
   end		

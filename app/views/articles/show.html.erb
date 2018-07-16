@@ -1,13 +1,18 @@
-	<h2 align="center">Title : <%= @article.title %></h2>
+<h2 align="center">Title : <%= @article.title %></h2>
 <div class="well col-xs-8 col-xs-offset-2">
-	<h4 class="center"><strong>Text</strong></h4>
-	<%= simple_format(@article.text) %>
-	<div class="article-actions">
-		<%= render @article.comments %>	
+  <h3 style="font-style: italic; text-transform: capitalize;"><%= @article.text%></h3>
+  <div class="article-actions">
+      <div id="com" style="padding-left: 15px;">
+        <%= render 'comments/comment' %>
+    </div>
 		<%= render 'comments/form' %>
-		<%= link_to "Edit", edit_article_path(@article), class: "btn btn-sm btn-primary" %>
-		<%= link_to "Delete", article_path(@article), method: :delete,data: { confirm: "Are you sure you want to delete the article?"},
-			class: "btn btn-sm btn-danger" %>
+		<br>
+		<% if(current_user.articles.ids.include? @article.id) %>
+		  <%= link_to "Edit", edit_article_path(@article), class: "btn btn-sm btn-primary" %>
+		  <%= link_to "Delete", article_path(@article), method: :delete,data: { confirm: "Are you sure you want to delete the article?"},
+			class: "btn btn-sm btn-danger" 
+      %>
+		<% end %>
 		<%= link_to "View", articles_path, class: "btn btn-sm btn-success" %>
 	</div>
 </div> 

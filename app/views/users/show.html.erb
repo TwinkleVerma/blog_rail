@@ -1,6 +1,5 @@
-<p id="notice"><%= notice %></p>
-
-<p>
+<div class="jumbotron">
+	<p>
   <strong>Username:</strong>
   <%= @user.username %>
 </p>
@@ -9,6 +8,11 @@
   <strong>Email:</strong>
   <%= @user.email %>
 </p>
+<p>
+  <strong>Articles:</strong>
+  <%= @user.articles.count %>
+</p>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+
+</div>
