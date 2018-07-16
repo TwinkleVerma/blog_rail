@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-  before_action :require_login, except: [:login, :new, :create, :auth_user]
   
   def new
     @user = User.new
@@ -66,7 +65,7 @@ class UsersController < ApplicationController
 
   def logout
     current_user = session[:user_id] = nil  
-    redirect_to root_path 
+    redirect_to welcome_index_path
   end
 
   private
