@@ -3,6 +3,7 @@ class ArticlesController < ApplicationController
   def new
     @user = User.new
 		@article = Article.new
+    @category = Category.new
 	end
 
 	def edit
@@ -47,7 +48,7 @@ class ArticlesController < ApplicationController
   private
   	
   def article_params
-    params.require(:article).permit(:title, :text)
+    params.require(:article).permit(:title, :text, :category_id)
   end
   
 end
