@@ -3,7 +3,6 @@ class ArticlesController < ApplicationController
   def new
     @user = User.new
 		@article = Article.new
-    @category = Category.new
 	end
 
 	def edit
