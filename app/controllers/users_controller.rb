@@ -32,9 +32,6 @@ class UsersController < ApplicationController
             flash[:danger] = "Can't create users account"      
             render 'new'
           end
-        else
-          flash[:danger] = "Can't create users account"      
-          render 'new'
         end
       else
         flash[:danger] = "Can't create users account"      

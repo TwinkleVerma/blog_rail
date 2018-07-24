@@ -13,10 +13,13 @@
         <strong>Articles:</strong>
         <%= @user.articles.count %>
       </p>
-      <%= link_to 'Edit', edit_user_path(@user) %> |
+      <% if @user == current_user %>
+        <%= link_to 'Edit', edit_user_path(@user) %> |
+      <% end %>
     </div>
     <div id="rgt">
       <%= image_tag( get_user_image(@user), width: "120", height: "120", id: "img", alt: @user.username) %>
+      
     </div>
   </div>
 </div>

@@ -73,3 +73,8 @@ img{
 #commenter_img{
   margin-right: 20px;
 }
+#profile_link, #commenter_img{
+  &:hover{
+    background-color:rgba(0, 0, 255, 0);
+  }
+}

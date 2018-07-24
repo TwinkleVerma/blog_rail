@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-    
+
   skip_before_action :verify_authenticity_token
   include CommentsHelper
 
@@ -30,7 +30,6 @@ class CommentsController < ApplicationController
       @comment = @article.comments.find(params[:id])
       if @comment.destroy
         flash[:danger] = "Comment deleted"
-        redirect_to article_path(@article)
       else
         flash[:danger] = "Comment cannot deleted"
         redirect_to article_path(@article)
