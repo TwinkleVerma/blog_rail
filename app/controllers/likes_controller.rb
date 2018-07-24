@@ -3,9 +3,6 @@ class LikesController < ApplicationController
   skip_before_action :verify_authenticity_token
   include LikeHelper
 
-  def index
-  end
-
   def create
     if params[:like_type].present? && params[:like_id].present?
       article_or_comment_classname = params[:like_type].constantize
