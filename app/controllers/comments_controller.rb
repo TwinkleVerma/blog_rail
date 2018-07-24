@@ -8,8 +8,8 @@ class CommentsController < ApplicationController
   end
 	
   def create
+    @article = Article.find(params[:article_id])
     if params[:article_id].present? && params[:body].present?
-      @article = Article.find(params[:article_id])
       @comment = @article.comments.build({body: params[:body],user_id: current_user.id})
       if @comment.save
         flash[:success] = "Comment saved"
