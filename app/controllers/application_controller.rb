@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   helper_method :current_user
-  before_action :require_login, only: [:edit, :create, :update, :show, :destroy]
+  before_action :require_login, only: [:edit, :update, :show, :destroy]
 
   def current_user
     current_user ||= User.find_by_id(session[:user_id])
@@ -17,5 +17,4 @@ class ApplicationController < ActionController::Base
       redirect_to articles_path
     end
   end
-
 end

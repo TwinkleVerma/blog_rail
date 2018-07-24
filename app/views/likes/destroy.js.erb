@@ -1,0 +1,25 @@
+<% if @like.destroy && params[:like_type] == 'Article' %>
+	
+  <% like_status = enitity_liked(params[:like_type], params[:like_id]) %>
+  <% link_class = like_status ? "img_linkd" : "img_link" %>
+
+	$(".form_like").html("<%= escape_javascript(render(:partial => 'likes/likeLink',  locals: {  likeId: @like.id, link_class: link_class+' heart_like', likeable_type: params[:like_type], likeable_id: params[:like_id]}))%>");
+	$(".like_count").html("<%= count_likes(params[:like_id], params[:like_type]) %>");
+
+<% else %>
+  
+  <% if @like.destroy && params[:like_type] == 'Comment' %>
+   
+    <% like_status = enitity_liked(params[:like_type], params[:like_id]) %>
+    <% link_class = like_status ? "img_linkd" : "img_link" %>
+
+    $("#cm .form_like<%=params[:like_id]%>").html("<%= escape_javascript(render(:partial => 'likes/likeLink',  locals: {  likeId: @like.id, link_class: link_class+' heart_like', likeable_type: params[:like_type], likeable_id: params[:like_id]}))%>");
+    $("#cm .like_count<%=params[:like_id]%>").html("<%= count_likes(params[:like_id], params[:like_type]) %>");
+
+  <% else %>
+	  
+    <% flash[:failure]= "Can not unlike #{params[:like_type]}" %> 
+  
+  <% end %>
+
+<% end %>

@@ -21,7 +21,9 @@
         <li style="list-style-type: none;">
           <%if current_user!=nil %>
             <br>
-            <%= link_to current_user.username, user_path(current_user.id), id: "p" %>
+            <%= link_to user_path(current_user.id), id: "p" do%>
+              <%= image_tag( get_user_image(current_user), width: "64", height: "64", id: "img", alt: current_user.username) %>
+            <% end %>            
             <%= link_to "LOGOUT", logout_users_path, class: "navbar-collapse-brand", id: "logout" %>
           <% end %>
         </li>

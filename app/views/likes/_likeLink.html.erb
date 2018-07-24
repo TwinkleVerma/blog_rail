@@ -1,0 +1,9 @@
+<% entity_like_status = enitity_liked(likeable_type, likeable_id) %>
+
+<% img_src = entity_like_status ? "/assets/like.png" : "/assets/unlike.png" %>
+
+<%= link_to 'javascript:void(0)', id: "like"+likeable_type+""+likeable_id.to_s, likeId: likeId, class: link_class+' heart_like', likeable_type: likeable_type, likeable_id: likeable_id do%>
+
+	<%= image_tag( img_src, width: "32", height: "32", id: "img") %>
+	
+ <% end %>

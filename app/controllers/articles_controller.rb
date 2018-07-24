@@ -1,13 +1,15 @@
 class ArticlesController < ApplicationController
   
+  before_action :set_article, only: [:edit, :update, :show, :destroy]
+  include ArticlesHelper
+
   def new
     @user = User.new
 		@article = Article.new
 	end
 
 	def edit
-    @article = Article.find(params[:id])
-	end
+  end
 
   def create
     @article = current_user.articles.create(article_params)
@@ -15,22 +17,22 @@ class ArticlesController < ApplicationController
       flash[:success] = "Article was successfully created"
       redirect_to @article
   	else
+      flash[:success] = "Article was not created"
       render 'new'
   	end
 	end
 
 	def update
-    @article = Article.find(params[:id])
-		if @article.update(article_params)
+	  if @article.update(article_params)
       flash[:success] = "Article was successfully updated"
-    	redirect_to @article
+      redirect_to @article
     else
+      flash[:failure] = "Can't update article"
       render 'edit'
     end
 	end
 
   def show
-    @article = Article.find(params[:id])
 	end
   	
   def index
@@ -38,14 +40,22 @@ class ArticlesController < ApplicationController
   end
   
   def destroy
-    @article = Article.find(params[:id])
-  	@article.destroy
-    flash[:danger] = "Article was successfully deleted"
-  	redirect_to articles_path
+    if @article.destroy
+      flash[:danger] = "Article was successfully deleted"
+    else
+      flash[:danger] = "Can't delete article"
+    end
+    redirect_to articles_path
 	end
   
   private
-  	
+  
+  def set_article
+    @article = Article.find_by_id(params[:id])
+    if @article.blank?
+      false
+    end
+  end
   def article_params
     params.require(:article).permit(:title, :text, :category_id)
   end

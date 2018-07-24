@@ -1,18 +1,22 @@
 <div class="jumbotron">
-	<p>
-  <strong>Username:</strong>
-  <%= @user.username %>
-</p>
-
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
-<p>
-  <strong>Articles:</strong>
-  <%= @user.articles.count %>
-</p>
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-
+  <div class="fix_block">
+    <div id="lft">
+      <p>
+        <strong>Username:</strong>
+        <%= @user.username %>
+      </p>
+      <p>
+        <strong>Email:</strong>
+        <%= @user.email %>
+      </p>
+      <p>
+        <strong>Articles:</strong>
+        <%= @user.articles.count %>
+      </p>
+      <%= link_to 'Edit', edit_user_path(@user) %> |
+    </div>
+    <div id="rgt">
+      <%= image_tag( get_user_image(@user), width: "120", height: "120", id: "img", alt: @user.username) %>
+    </div>
+  </div>
 </div>

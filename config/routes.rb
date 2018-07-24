@@ -7,7 +7,9 @@ Rails.application.routes.draw do
     get 'logout', on: :collection
     post 'auth_user', on: :collection
   end
+  resources :images
   resources :categories
+  resources :likes
   resources :articles do
   	resources :comments
   end

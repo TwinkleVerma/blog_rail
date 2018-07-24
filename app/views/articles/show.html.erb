@@ -1,19 +1,32 @@
 <h2 align="center">Title : <%= @article.title %></h2>
+
 <div class="well col-xs-8 col-xs-offset-2">
-  <h3 style="font-style: italic; text-transform: capitalize;"><%= @article.text%><h3>
   
-	<div class="article-actions">
-		<div id="com" style="padding-left: 15px;">
-	    	<%= render 'comments/comment' %>
-	    </div>
-		<%= render 'comments/form' %>
-		<br>
-		<% if(current_user.articles.ids.include? @article.id) %>
-		  <%= link_to "Edit", edit_article_path(@article), class: "btn btn-sm btn-primary" %>
-		  <%= link_to "Delete", article_path(@article), method: :delete,data: { confirm: "Are you sure you want to delete the article?"},
-			class: "btn btn-sm btn-danger" %>
-		<% end %>
-		<%= link_to "View", articles_path, class: "btn btn-sm btn-success" %>
-	</div>
-	<h5><i><b>Category : </b><%= @article.category.name %></i></h5>
+  <h3 style="font-style: italic; text-transform: capitalize;"><%= @article.text%></h3>
+  
+  <div class="article-actions">
+    
+    <div id="com" style="padding-left: 15px;">
+      <%= render 'comments/comment' %>
+    </div>
+    
+    <%= render 'comments/form' %>
+    
+    <% if check_whether_user_created_article(@article.id) %>
+      <%= link_to "Edit", edit_article_path(@article), class: "btn btn-sm btn-primary" %>
+      <%= link_to "Delete", article_path(@article), method: :delete,data: { confirm: "Are you sure you want to delete the article?"},class: "btn btn-sm btn-danger" %>
+    <% end %>
+  
+  </div>
+  <h5><i><b>Category : </b><%= get_category_name(@article) %></i></h5>
+
+    <span class="form_like">
+      <% entity_like_status = enitity_liked('Article', @article.id) %>
+      <% link_class = entity_like_status ? "img_linkd" : "img_link" %>
+      <% ids_of_like = @article.likes.ids %>
+      <% likeId = entity_like_status ?  ids_of_like : '' %>
+      <%= render 'likes/likeLink',likeId: likeId, link_class: link_class, likeable_type: "Article", likeable_id: @article.id%></span>
+    <span class="like_count">
+      <%= count_likes(@article.id, 'Article') %>
+    </span>  
 </div> 

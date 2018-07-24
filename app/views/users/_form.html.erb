@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-xs-12">
-    <%= form_with(model: user, local: true, :html => {class: "form-horizontal", role:"from"}) do |form| %>
+    <%= form_with model: @user, multipart: true, local: true, :html => {class: "form-horizontal", role:"from"} do |form| %>
     
     <div class="form-group">
       <%= form.label :username, class: "col-sm-2 control-label"  %>
@@ -12,23 +12,34 @@
     <div class="form-group">
       <%= form.label :email, class: "col-sm-2 control-label"%>
       <div class="col-sm-10">
-            <%= form.text_field :email, class: "form-control", id: "email"%><span id="semail"></span>
+        <%= form.text_field :email, class: "form-control", id: "email"%><span id="semail"></span>
       </div>
     </div>
 
     <div class="form-group">
       <%= form.label :password, class: "col-sm-2 control-label"  %>
       <div class="col-sm-10">
-            <%= form.password_field :password, class: "form-control" , id: "password"%><span id="spassword"></span>
+        <%= form.password_field :password, class: "form-control" , id: "password"%><span id="spassword"></span>
       </div>
     </div>
 
     <div class="form-group">
       <%= form.label :Confirm_Password, class: "col-sm-2 control-label"  %>
       <div class="col-sm-10">
-            <%= form.password_field :cpassword, class: "form-control", id: "cpassword"%><span id="scpassword"></span>
+        <%= form.password_field :cpassword, class: "form-control", id: "cpassword"%><span></span>
       </div>
     </div>
+
+    <%= form.fields_for :user_image_attributes do |ff| %>
+
+    <div class="form-group">
+      <%= ff.label :Profile_Image, class: "col-sm-2 control-label"  %>
+      <div class="col-sm-10">
+        <%= ff.file_field :picture, accept: 'image/jpeg, image/gif, image/png', class: "form-control" , id: "picture"%><span id="spicture"></span>
+      </div>
+    </div>
+
+    <% end %>
 
     <div class="form-group">
       <div class="col-sm-offset-2 col-sm-10">

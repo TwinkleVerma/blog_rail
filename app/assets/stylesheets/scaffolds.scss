@@ -1,3 +1,6 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
 body {
   background-color: #fff;
   color: #333;
@@ -52,4 +55,21 @@ div {
 
 label {
   display: block;
+}
+.heart_like {
+  &:hover {
+    color: red;
+    background-color:rgba(0, 0, 255, 0);
+  }
+}
+#img{
+  &:hover {
+    transform: scale(1.5);
+  }
+}
+img{
+  border-radius: 50%;
+}
+#commenter_img{
+  margin-right: 20px;
 }
