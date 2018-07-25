@@ -8,5 +8,4 @@ module WelcomeHelper
       "/assets/man.png"
     end
   end
-
 end

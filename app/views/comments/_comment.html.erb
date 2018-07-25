@@ -13,7 +13,7 @@
         
         <% if current_user.id == comment.user_id %>  
           <div class="col-xs-12">
-            <%= link_to 'Destroy Comment', 'javascript:void(0)', article: @article.id, comment: comment.id, id: 'link', data: { confirm: 'Are you sure?'} %>
+            <%= link_to 'Destroy Comment', 'javascript:void(0)', article: @article.id, comment: comment.id, class: 'link', data: { confirm: 'Are you sure?'} %>
           </div>
         <% end %>
         <%= comment.body %>
