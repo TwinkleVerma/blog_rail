@@ -3,4 +3,5 @@
 </h1>
 <p>
   <%= @user.username %> has commented "<%= @comment.body %>" on your article "<%= @article.title %>"
+  <a href="http://localhost:3000/articles/<%= @article.id %>">Click to view comment</a>
 </p>
